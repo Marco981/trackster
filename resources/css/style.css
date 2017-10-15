@@ -50,6 +50,11 @@ input:active {
 	color: white;
 }
 
+.thumbnail {
+	margin-bottom: 0;
+	border:0;
+}
+
 .results {
 	border-bottom: 1px solid rgb(204,204,204);
 }
@@ -58,7 +63,7 @@ input:active {
 	color: rgb(239,237,242);
 }
 
-.results p {
+.results p, .col-header p {
 	color: rgb(74,74,74);
 	margin-top: 1rem;
 }

@@ -1,7 +1,12 @@
 var Trackster = {};
 	var API_KEY = "61c48c83ab241dd92ab6e371e9934e78";
 	var search = $("#search-button");
-	
+	$('.input').keypress(function (e) {
+  		if (e.which == 13) {
+    var title = $(".input").val()
+		Trackster.searchTracksByTitle(title);
+  };
+});
 	search.click(function() {
 		var title = $(".input").val()
 		Trackster.searchTracksByTitle(title);
@@ -14,13 +19,15 @@ var Trackster = {};
 */
 Trackster.renderTracks = function(tracks) {
 	$("#results").empty();
-	var mediumAlbumArt = tracks[i].image[1]["#text"];
 	for (var i = 0; i < tracks.length; i++) {
+		var mediumAlbumArt = tracks[i].image[1]["#text"];
 		var row ="<div class=\"row results\">"+
 						"<a class=\"col-md-offset-1 col-md-1 fa-2x\" href="+tracks[i].url+"><i class=\"fa fa-play-circle-o\"></i></a>"+
 						"<p class=\"col-md-4\">"+tracks[i].name+"</p>"+
 						"<p class=\"col-md-2\">"+tracks[i].artist+"</p>"+
-						// "<p class=\"col-md-2\">"+mediumAlbumArt+"</p>"+
+						"<div class=\"col-md-2 thumbnail\">"+
+							"<img src=\""+mediumAlbumArt+"\">"+
+						"</div>"+
 						"<p class=\"col-md-2\">"+tracks[i].listeners+"</p>"+
 					"</div>";
 		$("#results").append(row);
